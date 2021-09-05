@@ -20,6 +20,6 @@ public class Mecanico {
     private Endereco endereco;
 
     @SerializedName("mechanicSpeciality")
-    private String especialidade;
+    private EnumEspecialidade especialidade;
 
 }
