@@ -13,8 +13,16 @@ public class OrdemServico {
     @SerializedName("orderId")
     private Integer id;
 
+    @SerializedName("car")
     private Carro carro;
+
+    @SerializedName("mechanic")
+    private Mecanico mecanico;
+
+    @SerializedName("status")
     private EnumStatus status;
+
+    @SerializedName("data")
     private String data;
 
 }
