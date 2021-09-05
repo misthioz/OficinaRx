@@ -1,7 +1,7 @@
-package com.letscode.oficina.Controller;
+package com.letscode.oficina.controller;
 
-import com.letscode.oficina.Domain.Endereco;
-import com.letscode.oficina.Service.EnderecoService;
+import com.letscode.oficina.domain.Endereco;
+import com.letscode.oficina.service.EnderecoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

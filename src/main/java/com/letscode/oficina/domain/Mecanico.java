@@ -1,4 +1,4 @@
-package com.letscode.oficina.Domain;
+package com.letscode.oficina.domain;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;

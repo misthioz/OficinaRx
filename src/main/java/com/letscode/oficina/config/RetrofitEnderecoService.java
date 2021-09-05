@@ -1,6 +1,6 @@
-package com.letscode.oficina.Config;
+package com.letscode.oficina.config;
 
-import com.letscode.oficina.Domain.Endereco;
+import com.letscode.oficina.domain.Endereco;
 import reactor.core.publisher.Mono;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

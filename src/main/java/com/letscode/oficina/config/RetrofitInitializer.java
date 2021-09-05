@@ -1,4 +1,4 @@
-package com.letscode.oficina.Config;
+package com.letscode.oficina.config;
 
 import com.jakewharton.retrofit2.adapter.reactor.ReactorCallAdapterFactory;
 import okhttp3.OkHttpClient;

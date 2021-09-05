@@ -1,4 +1,4 @@
-package com.letscode.oficina.Domain;
+package com.letscode.oficina.domain;
 
 import lombok.Getter;
 import lombok.Setter;

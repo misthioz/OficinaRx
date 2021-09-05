@@ -1,9 +1,8 @@
-package com.letscode.oficina.Service;
+package com.letscode.oficina.service;
 
-import com.letscode.oficina.Config.RetrofitEnderecoService;
-import com.letscode.oficina.Config.RetrofitInitializer;
-import com.letscode.oficina.Domain.Endereco;
-import lombok.AllArgsConstructor;
+import com.letscode.oficina.config.RetrofitEnderecoService;
+import com.letscode.oficina.config.RetrofitInitializer;
+import com.letscode.oficina.domain.Endereco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
