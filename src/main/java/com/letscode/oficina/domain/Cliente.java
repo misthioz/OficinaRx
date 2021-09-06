@@ -5,26 +5,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+
 public class Cliente {
 
-    @SerializedName("clientId")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @SerializedName("clientName")
     private String nome;
-
-    @SerializedName("clientAge")
     private Integer idade;
-
-    @SerializedName("clientAddress")
-    private Endereco endereco;
-
-    @SerializedName("clientTelephones")
-    private List<String> telefones;
+    private String cep;
+    private String enderecoComplemento;
+    private String enderecoNumero;
 
 }
