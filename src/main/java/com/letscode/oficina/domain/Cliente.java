@@ -1,6 +1,5 @@
 package com.letscode.oficina.domain;
 
-import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +20,7 @@ public class Cliente {
     private Integer id;
     private String nome;
     private Integer idade;
+    // TODO Não seria melhor chamar um objeto Endereco aqui?
     private String cep;
     private String enderecoComplemento;
     private String enderecoNumero;
