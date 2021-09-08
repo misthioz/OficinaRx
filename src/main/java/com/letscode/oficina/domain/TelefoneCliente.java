@@ -3,29 +3,26 @@ package com.letscode.oficina.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import javax.persistence.*;
+
 
 @Getter
 @Setter
-@Entity
+@Document
 
 public class TelefoneCliente {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTelefone;
+    @Id
+    private String idTelefone;
 
     //TODO Verficar se temos mascaras para tratar telefones
     private String telefone;
 
-    //TODO ler esse artigo sobre fetchtype https://www.devmedia.com.br/lazy-e-eager-loading-com-hibernate/29554
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-//    @ManyToOne
-//    @JoinColumn (name = "idCliente", referencedColumnName = "idCliente")
-//    Cliente cliente;
 
 
 
