@@ -10,6 +10,6 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface MecanicoRepository extends ReactiveMongoRepository<Mecanico, String> {
-    public Flux<MecanicoResponse> findMecanicosByEspecialidade(Especialidade especialidade);
-    public Mono<Mecanico> findMecanicoByName(String nome);
+    Flux<Mecanico> findMecanicosByEspecialidade(Especialidade especialidade);
+    Mono<Mecanico> findMecanicoByName(String nome);
 }

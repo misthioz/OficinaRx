@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 public class Mecanico {
 
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private Endereco endereco;
     private Especialidade especialidade;

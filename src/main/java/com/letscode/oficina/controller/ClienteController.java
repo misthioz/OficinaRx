@@ -17,12 +17,12 @@ public class ClienteController {
     private final ClienteService clienteService;
 
     @PostMapping("adicionar")
-    public Mono<Cliente> gravarCliente (@RequestBody Mono<ClienteRequest> clienteRequest) {
+    public Mono<Cliente> gravarCliente(@RequestBody Mono<ClienteRequest> clienteRequest) {
         return clienteService.gravarCliente(clienteRequest);
     }
 
     @GetMapping("listartodos")
-    public Flux<Cliente> listarTodos () {
+    public Flux<Cliente> listarTodos() {
         return clienteService.listarTodos();
     }
 
@@ -32,12 +32,12 @@ public class ClienteController {
     }
 
     @PutMapping("atualizar/{id}")
-    public Mono<Cliente> atualizarCliente (@RequestBody Mono<ClienteRequest> clienteRequest, @PathVariable String id) {
+    public Mono<Cliente> atualizarCliente(@RequestBody Mono<ClienteRequest> clienteRequest, @PathVariable String id) {
         return clienteService.atualizarCliente(clienteRequest, id);
     }
 
     @DeleteMapping("remover/{id}")
-    public Mono<Void> removerCliente (@PathVariable String id) {
+    public Mono<Void> removerCliente(@PathVariable String id) {
         return clienteService.deletarCliente(id);
     }
 
