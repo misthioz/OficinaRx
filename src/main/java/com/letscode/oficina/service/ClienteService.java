@@ -3,6 +3,7 @@ package com.letscode.oficina.service;
 import com.letscode.oficina.Repository.ClienteRepository;
 import com.letscode.oficina.Request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
+import com.letscode.oficina.domain.Endereco;
 import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
@@ -29,9 +30,13 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public Mono<Cliente> listarCliente(String nome) {
+
+    public Flux<ClienteResponse> listarCliente(String nome) {
         return clienteRepository.findClienteByNomeIsLike(nome);
+
     }
+
+  //  return users.flatMap(u -> roleRepo.findById(u.getRoleId()).map(r -> new UserDto(u, r)));
 
 
     public Mono<Cliente> atualizarCliente(Mono<ClienteRequest> clienteRequestMono, String id) {

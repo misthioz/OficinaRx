@@ -23,4 +23,5 @@ public class EnderecoService {
 
         return this.retrofit.create(RetrofitEnderecoService.class).getEndereco(cep);
     }
+
 }

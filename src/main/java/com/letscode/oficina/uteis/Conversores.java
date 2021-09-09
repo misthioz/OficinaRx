@@ -2,10 +2,13 @@ package com.letscode.oficina.uteis;
 
 import com.letscode.oficina.Request.CarroRequest;
 import com.letscode.oficina.Request.ClienteRequest;
+import com.letscode.oficina.Request.TelefoneClienteRequest;
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.domain.Cliente;
+import com.letscode.oficina.domain.TelefoneCliente;
+import com.letscode.oficina.response.ClienteResponse;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.propertyeditors.ClassEditor;
+
 
 public class Conversores {
 
@@ -26,6 +29,25 @@ public class Conversores {
         BeanUtils.copyProperties(carroRequest,carro);
         return carro;
     }
+
+    public static TelefoneCliente telefoneClienteRequestParaTelefoneCliente (TelefoneClienteRequest telefoneClienteRequest) {
+        TelefoneCliente telefoneCliente = new TelefoneCliente();
+        BeanUtils.copyProperties(telefoneClienteRequest, telefoneCliente);
+        return telefoneCliente;
+    }
+
+    public static ClienteResponse clienteParaClienteResponse (Cliente cliente) {
+
+        ClienteResponse clienteResponse = new ClienteResponse();
+        clienteResponse.setDataNascimento(cliente.getDataNascimento());
+        clienteResponse.setNome(cliente.getNome());
+        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
+        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
+        return clienteResponse;
+
+
+    }
+
 
 }
 

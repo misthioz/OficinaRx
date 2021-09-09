@@ -2,6 +2,7 @@ package com.letscode.oficina.controller;
 
 import com.letscode.oficina.Request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
+import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.service.ClienteService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class ClienteController {
     }
 
     @GetMapping("pesquisar/{nome}")
-    public Mono<Cliente> localizarClientePorNome(@PathVariable String nome) {
+    public Flux<ClienteResponse> localizarClientePorNome(@PathVariable String nome) {
         return clienteService.listarCliente(nome);
     }
 
