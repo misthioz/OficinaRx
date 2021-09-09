@@ -1,6 +1,6 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Repository.ClienteRepository;
+import com.letscode.oficina.repository.ClienteRepository;
 import com.letscode.oficina.Request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.Endereco;

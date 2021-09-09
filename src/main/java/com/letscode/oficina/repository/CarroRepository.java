@@ -1,4 +1,4 @@
-package com.letscode.oficina.Repository;
+package com.letscode.oficina.repository;
 
 import com.letscode.oficina.domain.Carro;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;

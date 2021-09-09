@@ -1,4 +1,4 @@
-package com.letscode.oficina.config;
+package com.letscode.oficina.config.service;
 
 import com.letscode.oficina.domain.Endereco;
 import reactor.core.publisher.Mono;

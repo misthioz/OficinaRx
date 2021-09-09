@@ -14,16 +14,9 @@ public class Carro {
     @Id
     private String id;
 
-    @SerializedName("carPlate")
     private String placa;
-
-    @SerializedName("carBrand")
     private String marca;
-
-    @SerializedName("carColor")
     private String cor;
-
-    @SerializedName("client")
     private Cliente cliente;
 
 }

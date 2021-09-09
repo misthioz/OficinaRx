@@ -1,6 +1,5 @@
 package com.letscode.oficina.domain;
 
-import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +11,7 @@ import reactor.core.publisher.Mono;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Getter
@@ -28,5 +28,8 @@ public class Cliente {
     private String cep;
     private String enderecoComplemento;
     private String enderecoNumero;
+
+    // TODO incluir lista de carros?
+    //private List<Carro> carros;
 
 }

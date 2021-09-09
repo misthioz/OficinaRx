@@ -1,6 +1,6 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Repository.TelefoneClienteRepository;
+import com.letscode.oficina.repository.TelefoneClienteRepository;
 import com.letscode.oficina.Request.TelefoneClienteRequest;
 import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.uteis.Conversores;

@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Especialidade {
 
-    @SerializedName("mechanicSpecialty")
     private String specialty;
 
 }
