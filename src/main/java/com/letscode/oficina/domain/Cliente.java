@@ -5,16 +5,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDate;
-
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@Table("CLIENTE")
+@Table("Cliente")
 public class Cliente {
 
     @Id
@@ -24,6 +22,5 @@ public class Cliente {
 //    private String cep;
 //    private String enderecoComplemento;
 //    private String enderecoNumero;
-
 
 }
