@@ -29,7 +29,7 @@ public class Cliente {
     private String enderecoComplemento;
     private String enderecoNumero;
 
-    // TODO incluir lista de carros?
-    //private List<Carro> carros;
+    private List<Carro> carros;
+    private List<TelefoneCliente> telefones;
 
 }

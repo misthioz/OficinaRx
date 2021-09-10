@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +18,7 @@ public class Mecanico {
     private String id;
     private String name;
     private Endereco endereco;
-    private Especialidade especialidade;
+
+    private List<Especialidade> especialidade;
 
 }
