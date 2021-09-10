@@ -12,4 +12,6 @@ public class ClienteList {
     public String getClienteCount() {
         return "A quantidade de clientes é " + this.clienteList.size();
     }
+
+    // TODO Remoção dessa classe?
 }
