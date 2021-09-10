@@ -30,20 +30,20 @@ public class TelefoneClienteService {
     public Flux<TelefoneClienteResponse> listarTodos() {
         return telefoneClienteRepository.findAll().map(
                 telefoneCliente -> Conversores.telefoneClienteParaTelefoneClienteResponse(
-                                clienteService.listarClientePorId(telefoneCliente.getCliente().getId()) , telefoneCliente)
+                                clienteService.listarClientePorId(telefoneCliente.getIdcliente()) , telefoneCliente)
         );
     }
 
 
 
     public Flux<TelefoneCliente> listarPorCliente (String idCliente) {
-        return telefoneClienteRepository.findTelefoneClienteByCliente_Id(idCliente);
+        return telefoneClienteRepository.findTelefoneClienteByIdcliente(idCliente);
 
     }
 
     public Mono<TelefoneCliente> atualizarTelefoneCliente(Mono<TelefoneClienteRequest> telefoneClienteRequestMono, String idTelefone) {
         return telefoneClienteRequestMono.map(Conversores::telefoneClienteRequestParaTelefoneCliente)
-                .doOnNext(t -> t.setIdTelefone(idTelefone))
+                .doOnNext(t -> t.setId(idTelefone))
                 .flatMap(telefoneClienteRepository::save);
 
     }

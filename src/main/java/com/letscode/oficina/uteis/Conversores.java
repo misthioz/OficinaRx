@@ -47,13 +47,13 @@ public class Conversores {
 
     public static ClienteResponse clienteParaClienteResponse (Cliente cliente, EnderecoService enderecoService) {
         ClienteResponse clienteResponse = new ClienteResponse();
-        clienteResponse.setDataNascimento(cliente.getDataNascimento());
-        clienteResponse.setNome(cliente.getNome());
-        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
-        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
+//        clienteResponse.setDataNascimento(cliente.getDataNascimento());
+//        clienteResponse.setNome(cliente.getNome());
+//        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
+//        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
         //clienteResponse.setEndereco(enderecoMonoParaEndereco(enderecoService.viacep(cliente.getCep())));
 
-        enderecoService.viacep(cliente.getCep()).subscribe(clienteResponse::setEndereco);
+//        enderecoService.viacep(cliente.getCep()).subscribe(clienteResponse::setEndereco);
 
         return clienteResponse;
     }
@@ -68,7 +68,7 @@ public class Conversores {
     public static TelefoneClienteResponse telefoneClienteParaTelefoneClienteResponse (Mono<Cliente> clientemono, TelefoneCliente telefoneCliente) {
         Cliente cliente = new Cliente();
         TelefoneClienteResponse telefoneClienteResponse = new TelefoneClienteResponse();
-        telefoneClienteResponse.setIdTelefone(telefoneCliente.getIdTelefone());
+        telefoneClienteResponse.setIdTelefone(telefoneCliente.getId());
         telefoneClienteResponse.setTelefone(telefoneCliente.getTelefone());
         telefoneClienteResponse.setCliente(clienteMonoParaCliente(clientemono, cliente));
         return telefoneClienteResponse;

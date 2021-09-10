@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TelefoneClienteRequest {
 
-    private String idTelefone;
+    private String id;
     private String telefone;
-    private Cliente cliente;
+    private String idcliente;
 
 }

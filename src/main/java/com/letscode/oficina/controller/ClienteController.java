@@ -22,7 +22,7 @@ public class ClienteController {
     }
 
     @GetMapping("listartodos")
-    public Flux<ClienteResponse> listarTodos () {
+    public Flux<Cliente> listarTodos () {
         return clienteService.listarTodos();
     }
 
@@ -30,6 +30,12 @@ public class ClienteController {
     public Flux<ClienteResponse> localizarClientePorNome(@PathVariable String nome) {
         return clienteService.listarCliente(nome);
     }
+
+    @GetMapping("pesquisar/{id}")
+    public Mono<Cliente> localizarClientePorID(@PathVariable String id) {
+        return clienteService.listarClientePorId(id);
+    }
+
 
     @PutMapping("atualizar/{id}")
     public Mono<Cliente> atualizarCliente (@RequestBody Mono<ClienteRequest> clienteRequest, @PathVariable String id) {
