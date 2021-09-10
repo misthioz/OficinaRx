@@ -22,7 +22,7 @@ public class ClienteService {
 
     public Mono<Cliente> gravarCliente(Mono<ClienteRequest> clienteRequest) {
        return clienteRequest.map(Conversores::clienteRequestParaCliente).
-               flatMap(clienteRepository::insert);
+               flatMap(clienteRepository::save);
     }
 
     //TODO Pesquisar como retornar o clientResponse?

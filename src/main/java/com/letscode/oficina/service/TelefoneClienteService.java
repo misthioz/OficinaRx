@@ -24,7 +24,7 @@ public class TelefoneClienteService {
 
     public Mono<TelefoneCliente> gravarTelefoneCliente (Mono<TelefoneClienteRequest> telefoneRequestMono) {
         return telefoneRequestMono.map(Conversores::telefoneClienteRequestParaTelefoneCliente)
-                .flatMap(telefoneClienteRepository::insert);
+                .flatMap(telefoneClienteRepository::save);
     }
 
     public Flux<TelefoneClienteResponse> listarTodos() {

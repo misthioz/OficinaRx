@@ -1,11 +1,11 @@
 package com.letscode.oficina.Repository;
 
 import com.letscode.oficina.domain.TelefoneCliente;
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
 @Repository
-public interface TelefoneClienteRepository extends ReactiveMongoRepository<TelefoneCliente, String> {
+public interface TelefoneClienteRepository extends ReactiveCrudRepository<TelefoneCliente, String> {
     public Flux<TelefoneCliente> findTelefoneClienteByCliente_Id(String idcliente);
 }

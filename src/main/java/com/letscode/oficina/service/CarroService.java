@@ -1,7 +1,6 @@
 package com.letscode.oficina.service;
 
 import com.letscode.oficina.Repository.CarroRepository;
-import com.letscode.oficina.Repository.ClienteRepository;
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.Request.CarroRequest;
 import com.letscode.oficina.uteis.Conversores;
@@ -17,7 +16,7 @@ public class CarroService {
 
     public Mono<Carro> gravarCarro(Mono<CarroRequest> carroRequest){
         return carroRequest.map(Conversores::carroRequestParaCarro).
-                flatMap(carroRepository::insert);
+                flatMap(carroRepository::save);
     }
 
     public Flux<Carro> listarTodos(){

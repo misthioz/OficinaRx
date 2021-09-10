@@ -4,25 +4,21 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Table ("OrdemServico")
 public class OrdemServico {
 
-    @SerializedName("orderId")
+    @Id
     private Integer id;
-
-    @SerializedName("car")
     private Carro carro;
-
-    @SerializedName("mechanic")
     private Mecanico mecanico;
-
-    @SerializedName("status")
     private EnumStatus status;
-
-    @SerializedName("data")
     private String data;
 
 }
