@@ -18,17 +18,11 @@ import java.time.LocalDate;
 public class Cliente {
 
     @Id
-    @Column("id")
     private String id;
-    @Column("nome")
     private String nome;
-    @Column("dataNascimento")
     private LocalDate dataNascimento;
-    @Column("cep")
     private String cep;
-    @Column("enderecoComplemento")
     private String enderecoComplemento;
-    @Column("enderecoNumero")
     private String enderecoNumero;
 
 
