@@ -3,6 +3,7 @@ package com.letscode.oficina.service;
 import com.letscode.oficina.Repository.ClienteRepository;
 import com.letscode.oficina.Request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
+import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
@@ -23,9 +24,9 @@ public class ClienteService {
     }
 
     //TODO Pesquisar como retornar o clientResponse?
-    public Flux<Cliente> listarTodos() {
-      //  return clienteRepository.findAll().map(cliente -> Conversores.clienteParaClienteResponse(cliente, enderecoService));
-        return clienteRepository.findAll();
+    public Flux<ClienteResponse> listarTodos() {
+        return clienteRepository.findAll().map(cliente -> Conversores.clienteParaClienteResponse(cliente, enderecoService));
+     //   return clienteRepository.findAll();
     }
 
     public Flux<ClienteResponse> listarCliente(String nome) {
@@ -36,6 +37,12 @@ public class ClienteService {
         System.out.println("Listando");
         return clienteRepository.findById(id);
     }
+
+    public Mono<ClienteResponse> listarClientePorIdParaTel(TelefoneCliente telefoneCliente) {
+        return clienteRepository.findById(telefoneCliente.getIdcliente()).map(Conversores::pesquisaParaTelefone);
+    }
+
+
 
     public Mono<Cliente> atualizarCliente(Mono<ClienteRequest> clienteRequestMono, String id) {
         return clienteRequestMono.map(Conversores::clienteRequestParaCliente).doOnNext(e->e.setId(id)).

@@ -16,16 +16,12 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Mecanico {
 
     @Id
-    @SerializedName("mechanicId")
     private Integer id;
-
-    @SerializedName("mechanicName")
-    private String name;
-
-    @SerializedName("mechanicAddress")
-    private Endereco endereco;
-
-    @SerializedName("mechanicSpeciality")
-    private Especialidade especialidade;
+    private String nome;
+    private String CEP;
+    private String enderecoComplemento;
+    private String enderecoNumero;
+    private String idEspecialidade;
 
 }
+

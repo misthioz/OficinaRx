@@ -17,12 +17,6 @@ public class OrdemServicoResponse {
     private EnumStatus status;
     private String data;
 
-    public OrdemServicoResponse(OrdemServico ordemServico){
-        this.id = ordemServico.getId();
-        this.carro = ordemServico.getCarro();
-        this.mecanico = ordemServico.getMecanico();
-        this.status = ordemServico.getStatus();
-        this.data = ordemServico.getData();
-    }
+
 
 }

@@ -17,18 +17,8 @@ public class OrdemServicoRequest {
     private Mecanico mecanico;
     private EnumStatus status;
     private String data;
-    //TODO adicionar cliente
 
-    public OrdemServico convert(){
-        OrdemServico ordemServico = new OrdemServico();
 
-        ordemServico.setId(this.id);
-        ordemServico.setCarro(this.carro);
-        ordemServico.setMecanico(this.mecanico);
-        ordemServico.setStatus(this.status);
-        ordemServico.setData(this.data);
 
-        return ordemServico;
-    }
 
 }

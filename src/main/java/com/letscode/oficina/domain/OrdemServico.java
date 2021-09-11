@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -16,9 +18,10 @@ public class OrdemServico {
 
     @Id
     private Integer id;
-    private Carro carro;
-    private Mecanico mecanico;
+    private String idCarro;
+    private String idMecanico;
+    private String idCliente;
     private EnumStatus status;
-    private String data;
+    private LocalDate data;
 
 }

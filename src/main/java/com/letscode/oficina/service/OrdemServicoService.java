@@ -21,20 +21,20 @@ public class OrdemServicoService {
         return ordemServicoRepository.findAll();
     }
 
-    public Mono<OrdemServicoResponse> criarOrdemServicoService(OrdemServicoRequest ordemServicoRequest) {
-        Mono<OrdemServico> ordemServicoMono = Mono.just(ordemServicoRequest).flatMap(this::generateOrdemServico).flatMap(ordemServicoRepository::save);
+//    public Mono<OrdemServicoResponse> criarOrdemServicoService(OrdemServicoRequest ordemServicoRequest) {
+//        Mono<OrdemServico> ordemServicoMono = Mono.just(ordemServicoRequest).flatMap(this::generateOrdemServico).flatMap(ordemServicoRepository::save);
+//
+//        return ordemServicoMono.map(this::generateOrdemServicoResponse);
+//    }
 
-        return ordemServicoMono.map(this::generateOrdemServicoResponse);
-    }
+//    private Mono<OrdemServico> generateOrdemServico(OrdemServicoRequest ordemServicoRequest){
+//        return Mono.just(ordemServicoRequest.convert());
+//    }
 
-    private Mono<OrdemServico> generateOrdemServico(OrdemServicoRequest ordemServicoRequest){
-        return Mono.just(ordemServicoRequest.convert());
-    }
-
-    private OrdemServicoResponse generateOrdemServicoResponse(OrdemServico ordemServico){
-        OrdemServicoResponse ordemServicoResponse = new OrdemServicoResponse(ordemServico);
-        return ordemServicoResponse;
-    }
+//    private OrdemServicoResponse generateOrdemServicoResponse(OrdemServico ordemServico){
+//        OrdemServicoResponse ordemServicoResponse = new OrdemServicoResponse(ordemServico);
+//        return ordemServicoResponse;
+//    }
 
 
 

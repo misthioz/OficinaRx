@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 
 @Repository
 public interface TelefoneClienteRepository extends ReactiveCrudRepository<TelefoneCliente, String> {
+
     public Flux<TelefoneCliente> findTelefoneClienteByIdcliente(String idcliente);
 
     Flux<TelefoneCliente> findAllByIdcliente(String idCliente);

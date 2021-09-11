@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -34,40 +35,22 @@ public class TelefoneClienteService {
     }
 
     public Flux<TelefoneClienteResponse> listarTodos() {
-        Flux<TelefoneClienteResponse> map = telefoneClienteRepository.findAll()
-                .map(this::telefoneClienteParaTelefoneClienteResponse);
 
-        return map;
+        Flux<TelefoneCliente> telefonesclientesRetornados = telefoneClienteRepository.findAll();
+
+        Flux<TelefoneClienteResponse> telefoneClienteResponseFlux = telefonesclientesRetornados
+                .map(Conversores::telefoneClienteParaTelefoneClienteResponse);
+
+        Flux<ClienteResponse>  clienteResponseFlux = telefonesclientesRetornados
+                .flatMap(clienteService::listarClientePorIdParaTel);
+
+        return telefoneClienteResponseFlux.zipWith(clienteResponseFlux).map(this::mapearObjetResposta);
 
     }
 
-    public Mono<Cliente> clienteFlux(String idCliente) {
-        Mono<Cliente> clienteMono = clienteService.listarClientePorId(idCliente);
-        return clienteMono;
-    }
-
-    public TelefoneClienteResponse telefoneClienteParaTelefoneClienteResponse (TelefoneCliente telefoneCliente) {
-        TelefoneClienteResponse telefoneClienteResponse = new TelefoneClienteResponse();
-        clienteFlux(telefoneCliente.getIdcliente()).subscribe(cliente -> System.out.println(cliente.toString()));
-        telefoneClienteResponse.setIdTelefone(telefoneCliente.getId());
-        telefoneClienteResponse.setTelefone(telefoneCliente.getTelefone());
-        telefoneClienteResponse.setIdCliente(telefoneCliente.getIdcliente());
-
-
-
-        System.out.println("Teste2");
-        return telefoneClienteResponse;
-    }
-
-    private ClienteResponse extracted(TelefoneClienteResponse telefoneClienteResponse) {
-        ClienteResponse clienteResponse = new ClienteResponse();
-        clienteService.listarClientePorId(telefoneClienteResponse.getIdCliente()).filter(Objects::nonNull)
-                .subscribe(cliente -> {
-                    clienteResponse.setNome(cliente.getNome());
-                    System.out.println("teste");
-                });
-
-        return clienteResponse;
+    private TelefoneClienteResponse mapearObjetResposta(Tuple2<TelefoneClienteResponse, ClienteResponse> objects) {
+        objects.getT1().setClienteNome(objects.getT2().getNome());
+        return objects.getT1();
     }
 
 

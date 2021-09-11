@@ -22,7 +22,7 @@ public class ClienteController {
     }
 
     @GetMapping("listartodos")
-    public Flux<Cliente> listarTodos () {
+    public Flux<ClienteResponse> listarTodos () {
         return clienteService.listarTodos();
     }
 

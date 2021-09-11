@@ -47,34 +47,29 @@ public class Conversores {
         return telefoneCliente;
     }
 
+    public static TelefoneClienteResponse telefoneClienteParaTelefoneClienteResponse (TelefoneCliente telefoneCliente) {
+        TelefoneClienteResponse telefoneClienteResponse = new TelefoneClienteResponse();
+        telefoneClienteResponse.setTelefone(telefoneCliente.getTelefone());
+        telefoneClienteResponse.setIdCliente(telefoneCliente.getIdcliente());
+        telefoneClienteResponse.setIdTelefone(telefoneCliente.getId());
+        return  telefoneClienteResponse;
+    }
+
     public static ClienteResponse clienteParaClienteResponse (Cliente cliente, EnderecoService enderecoService) {
         ClienteResponse clienteResponse = new ClienteResponse();
-//        clienteResponse.setDataNascimento(cliente.getDataNascimento());
-//        clienteResponse.setNome(cliente.getNome());
-//        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
-//        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
-        //clienteResponse.setEndereco(enderecoMonoParaEndereco(enderecoService.viacep(cliente.getCep())));
-
-//        enderecoService.viacep(cliente.getCep()).subscribe(clienteResponse::setEndereco);
-
+        clienteResponse.setDataNascimento(cliente.getDataNascimento());
+        clienteResponse.setNome(cliente.getNome());
+        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
+        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
+        enderecoService.viacep(cliente.getCep()).subscribe(clienteResponse::setEndereco);
         return clienteResponse;
     }
 
-//    public static Endereco enderecoMonoParaEndereco (Mono<Endereco> enderecoMono) {
-//        final Endereco enderecoCliente = new Endereco();
-//     //   enderecoMono.subscribe(endereco -> System.out.println(endereco.getBairro()));
-//        enderecoMono.subscribe(endereco -> BeanUtils.copyProperties(endereco, enderecoCliente));
-//        return enderecoCliente;
-//    }
-
-
-
-
-
-
-
-
-
+    public static ClienteResponse pesquisaParaTelefone (Cliente cliente) {
+        ClienteResponse clienteResponse = new ClienteResponse();
+        clienteResponse.setNome(cliente.getNome());
+        return clienteResponse;
+    }
 
 
 
