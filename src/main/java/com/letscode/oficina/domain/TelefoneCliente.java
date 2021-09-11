@@ -4,7 +4,6 @@ package com.letscode.oficina.domain;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 
@@ -17,10 +16,15 @@ public class TelefoneCliente {
     @Id
     private String id;
     private String telefone;
-    private String idcliente;
+    private String idCliente;
 
+    public TelefoneCliente(String telefone,String id){
+        this.telefone = telefone;
+        this.idCliente = id;
+    }
 
+    public TelefoneCliente() {
 
-
+    }
 
 }

@@ -1,8 +1,8 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Repository.CarroRepository;
+import com.letscode.oficina.repository.CarroRepository;
 import com.letscode.oficina.domain.Carro;
-import com.letscode.oficina.Request.CarroRequest;
+import com.letscode.oficina.transferobject.request.CarroRequest;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

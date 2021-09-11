@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -22,5 +21,9 @@ public class Cliente {
 //    private String cep;
 //    private String enderecoComplemento;
 //    private String enderecoNumero;
+
+    public Cliente (String nome){
+        this.nome = nome;
+    }
 
 }

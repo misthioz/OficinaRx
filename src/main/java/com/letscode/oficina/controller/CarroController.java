@@ -1,6 +1,6 @@
 package com.letscode.oficina.controller;
 
-import com.letscode.oficina.Request.CarroRequest;
+import com.letscode.oficina.transferobject.request.CarroRequest;
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.service.CarroService;
 import lombok.AllArgsConstructor;
@@ -19,6 +19,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/carro")
 @AllArgsConstructor
 public class CarroController {
+
     private CarroService carroService;
 
     @PostMapping("adicionar")

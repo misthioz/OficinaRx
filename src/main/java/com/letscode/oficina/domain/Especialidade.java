@@ -1,18 +1,21 @@
 package com.letscode.oficina.domain;
 
-import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Table("especialidade")
+@Data
 public class Especialidade {
 
-    @SerializedName("mechanicSpecialty")
-    private String specialty;
+    @Id
+    @Column("id")
+    private Long id;
+    @Column("especialidade")
+    private String nomeEspecialidade;
+    @Column("id_mecanico")
+    private Long idMecanico;
 
 }
 

@@ -1,14 +1,16 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Repository.ClienteRepository;
-import com.letscode.oficina.Request.ClienteRequest;
+import com.letscode.oficina.repository.ClienteRepository;
+import com.letscode.oficina.transferobject.request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
-import com.letscode.oficina.response.ClienteResponse;
+import com.letscode.oficina.transferobject.response.ClienteResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.ArrayList;
 
 @Service
 @AllArgsConstructor
@@ -23,9 +25,14 @@ public class ClienteService {
     }
 
     //TODO Pesquisar como retornar o clientResponse?
-    public Flux<Cliente> listarTodos() {
-      //  return clienteRepository.findAll().map(cliente -> Conversores.clienteParaClienteResponse(cliente, enderecoService));
-        return clienteRepository.findAll();
+    public Flux<ClienteResponse> listarTodos() {
+        return clienteRepository.findAll().map(this::convertToResponse);
+    }
+
+    private ClienteResponse convertToResponse(Cliente cliente) {
+        ClienteResponse clienteResponse = ClienteResponse.from(cliente);
+        clienteResponse.setTelefones(new ArrayList<>());
+        return clienteResponse;
     }
 
     public Flux<ClienteResponse> listarCliente(String nome) {

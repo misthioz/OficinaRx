@@ -1,4 +1,4 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.transferobject.request;
 
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.domain.EnumStatus;
@@ -21,13 +21,11 @@ public class OrdemServicoRequest {
 
     public OrdemServico convert(){
         OrdemServico ordemServico = new OrdemServico();
-
         ordemServico.setId(this.id);
         ordemServico.setCarro(this.carro);
         ordemServico.setMecanico(this.mecanico);
         ordemServico.setStatus(this.status);
         ordemServico.setData(this.data);
-
         return ordemServico;
     }
 

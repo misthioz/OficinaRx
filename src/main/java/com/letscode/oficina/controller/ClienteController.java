@@ -1,8 +1,8 @@
 package com.letscode.oficina.controller;
 
-import com.letscode.oficina.Request.ClienteRequest;
+import com.letscode.oficina.transferobject.request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
-import com.letscode.oficina.response.ClienteResponse;
+import com.letscode.oficina.transferobject.response.ClienteResponse;
 import com.letscode.oficina.service.ClienteService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class ClienteController {
     }
 
     @GetMapping("listartodos")
-    public Flux<Cliente> listarTodos () {
+    public Flux<ClienteResponse> listarTodos () {
         return clienteService.listarTodos();
     }
 
@@ -32,18 +32,18 @@ public class ClienteController {
     }
 
     @GetMapping("pesquisar/{id}")
-    public Mono<Cliente> localizarClientePorID(@PathVariable String id) {
+    public Mono<Cliente> localizarClientePorId(@PathVariable String id) {
         return clienteService.listarClientePorId(id);
     }
 
 
     @PutMapping("atualizar/{id}")
-    public Mono<Cliente> atualizarCliente (@RequestBody Mono<ClienteRequest> clienteRequest, @PathVariable String id) {
+    public Mono<Cliente> atualizarCliente(@RequestBody Mono<ClienteRequest> clienteRequest, @PathVariable String id) {
         return clienteService.atualizarCliente(clienteRequest, id);
     }
 
     @DeleteMapping("remover/{id}")
-    public Mono<Void> removerCliente (@PathVariable String id) {
+    public Mono<Void> removerCliente(@PathVariable String id) {
         return clienteService.deletarCliente(id);
     }
 

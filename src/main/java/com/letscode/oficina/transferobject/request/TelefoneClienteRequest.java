@@ -1,4 +1,4 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.transferobject.request;
 
 import com.letscode.oficina.domain.Cliente;
 import lombok.AllArgsConstructor;

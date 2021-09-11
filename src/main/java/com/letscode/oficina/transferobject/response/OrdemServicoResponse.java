@@ -1,12 +1,10 @@
-package com.letscode.oficina.response;
+package com.letscode.oficina.transferobject.response;
 
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.domain.EnumStatus;
 import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.domain.OrdemServico;
 import lombok.Getter;
-
-import java.time.LocalDate;
 
 @Getter
 public class OrdemServicoResponse {

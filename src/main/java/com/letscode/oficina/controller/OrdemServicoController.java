@@ -1,9 +1,8 @@
 package com.letscode.oficina.controller;
-import com.letscode.oficina.Request.OrdemServicoRequest;
+import com.letscode.oficina.transferobject.request.OrdemServicoRequest;
 import com.letscode.oficina.domain.OrdemServico;
-import com.letscode.oficina.response.OrdemServicoResponse;
+import com.letscode.oficina.transferobject.response.OrdemServicoResponse;
 import com.letscode.oficina.service.OrdemServicoService;
-import io.reactivex.Observable;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

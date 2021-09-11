@@ -1,24 +1,19 @@
 package com.letscode.oficina.uteis;
 
-import com.letscode.oficina.Request.CarroRequest;
-import com.letscode.oficina.Request.ClienteRequest;
-import com.letscode.oficina.Request.TelefoneClienteRequest;
+import com.letscode.oficina.domain.Especialidade;
+import com.letscode.oficina.domain.Mecanico;
+import com.letscode.oficina.transferobject.request.CarroRequest;
+import com.letscode.oficina.transferobject.request.ClienteRequest;
+import com.letscode.oficina.transferobject.request.EspecialidadeRequest;
+import com.letscode.oficina.transferobject.request.MecanicoRequest;
+import com.letscode.oficina.transferobject.request.TelefoneClienteRequest;
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.domain.Cliente;
-import com.letscode.oficina.domain.Endereco;
 import com.letscode.oficina.domain.TelefoneCliente;
-import com.letscode.oficina.response.ClienteResponse;
-import com.letscode.oficina.response.TelefoneClienteResponse;
-import com.letscode.oficina.service.ClienteService;
+import com.letscode.oficina.transferobject.response.ClienteResponse;
 import com.letscode.oficina.service.EnderecoService;
-import io.reactivex.Observable;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.Objects;
-import java.util.Optional;
 
 public class Conversores {
 
@@ -47,22 +42,32 @@ public class Conversores {
         return telefoneCliente;
     }
 
+    public static Mecanico mecanicoRequestParaMecanico(MecanicoRequest mecanicoRequest) {
+        Mecanico mecanico = new Mecanico();
+        BeanUtils.copyProperties(mecanicoRequest, mecanico);
+        return mecanico;
+    }
+
+    public static Especialidade especialidadeRequestParaEspecialidade (EspecialidadeRequest especialidadeRequest) {
+        Especialidade especialidade = new Especialidade();
+        BeanUtils.copyProperties(especialidadeRequest, especialidade);
+        return especialidade;
+    }
+
     public static ClienteResponse clienteParaClienteResponse (Cliente cliente, EnderecoService enderecoService) {
         ClienteResponse clienteResponse = new ClienteResponse();
 //        clienteResponse.setDataNascimento(cliente.getDataNascimento());
 //        clienteResponse.setNome(cliente.getNome());
 //        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
 //        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
-        //clienteResponse.setEndereco(enderecoMonoParaEndereco(enderecoService.viacep(cliente.getCep())));
-
+//        clienteResponse.setEndereco(enderecoMonoParaEndereco(enderecoService.viacep(cliente.getCep())));
 //        enderecoService.viacep(cliente.getCep()).subscribe(clienteResponse::setEndereco);
-
         return clienteResponse;
     }
 
 //    public static Endereco enderecoMonoParaEndereco (Mono<Endereco> enderecoMono) {
 //        final Endereco enderecoCliente = new Endereco();
-//     //   enderecoMono.subscribe(endereco -> System.out.println(endereco.getBairro()));
+//        enderecoMono.subscribe(endereco -> System.out.println(endereco.getBairro()));
 //        enderecoMono.subscribe(endereco -> BeanUtils.copyProperties(endereco, enderecoCliente));
 //        return enderecoCliente;
 //    }

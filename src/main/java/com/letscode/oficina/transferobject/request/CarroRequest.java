@@ -1,4 +1,4 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.transferobject.request;
 
 import com.letscode.oficina.domain.Cliente;
 import lombok.AllArgsConstructor;
@@ -15,4 +15,5 @@ public class CarroRequest {
     private String marca;
     private String cor;
     private Cliente cliente;
+
 }

@@ -11,7 +11,6 @@ import retrofit2.Retrofit;
 @Service
 public class EnderecoService {
 
-
     private final Retrofit retrofit;
 
     @Autowired
@@ -20,7 +19,6 @@ public class EnderecoService {
     }
 
     public Mono<Endereco> viacep(String cep) {
-
         return this.retrofit.create(RetrofitEnderecoService.class).getEndereco(cep);
     }
 
