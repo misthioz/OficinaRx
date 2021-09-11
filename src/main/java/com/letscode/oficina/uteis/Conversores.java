@@ -9,6 +9,7 @@ import com.letscode.oficina.domain.Endereco;
 import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.response.TelefoneClienteResponse;
+import com.letscode.oficina.service.ClienteService;
 import com.letscode.oficina.service.EnderecoService;
 import io.reactivex.Observable;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.beans.BeanUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class Conversores {
@@ -65,14 +67,17 @@ public class Conversores {
 //        return enderecoCliente;
 //    }
 
-    public static TelefoneClienteResponse telefoneClienteParaTelefoneClienteResponse (Mono<Cliente> clientemono, TelefoneCliente telefoneCliente) {
-        Cliente cliente = new Cliente();
-        TelefoneClienteResponse telefoneClienteResponse = new TelefoneClienteResponse();
-        telefoneClienteResponse.setIdTelefone(telefoneCliente.getId());
-        telefoneClienteResponse.setTelefone(telefoneCliente.getTelefone());
-        telefoneClienteResponse.setCliente(clienteMonoParaCliente(clientemono, cliente));
-        return telefoneClienteResponse;
-    }
+
+
+
+
+
+
+
+
+
+
+
 
     public static Cliente clienteMonoParaCliente (Mono<Cliente> clienteMono, Cliente cliente) {
         clienteMono.subscribe(cliente1 ->  BeanUtils.copyProperties(cliente1, cliente));

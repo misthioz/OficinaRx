@@ -18,5 +18,6 @@ public class TelefoneClienteResponse {
 
     private String idTelefone;
     private String telefone;
-    private Cliente cliente;
+    private String idCliente;
+    private String clienteNome;
 }
