@@ -2,6 +2,7 @@ package com.letscode.oficina.controller;
 
 import com.letscode.oficina.Request.TelefoneClienteRequest;
 import com.letscode.oficina.domain.TelefoneCliente;
+import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.response.TelefoneClienteResponse;
 import com.letscode.oficina.service.TelefoneClienteService;
 import lombok.AllArgsConstructor;
@@ -21,9 +22,11 @@ public class TelefoneClienteController {
         return telefoneClienteService.gravarTelefoneCliente(telefoneClienteRequestMono);
     }
 
-    @GetMapping("listartodos")
-    public Flux<TelefoneClienteResponse> listarTodos () {
-        return telefoneClienteService.listarTodos();
+    @GetMapping("/listartodos")
+    public Flux<ClienteResponse> listarTodos () {
+        Flux<ClienteResponse> clienteResponseFlux = telefoneClienteService.listarTodosPorCliente();
+        System.out.println(clienteResponseFlux);
+        return clienteResponseFlux;
     }
 
     @GetMapping("pesquisar/{idCliente}")

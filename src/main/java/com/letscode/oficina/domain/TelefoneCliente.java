@@ -19,8 +19,4 @@ public class TelefoneCliente {
     private String telefone;
     private String idcliente;
 
-
-
-
-
 }

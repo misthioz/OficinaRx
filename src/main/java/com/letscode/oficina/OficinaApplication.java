@@ -26,7 +26,7 @@ public class OficinaApplication {
                     "(id SERIAL PRIMARY KEY, nome varchar (255) not null);").fetch().first().subscribe();
 
             Oficina.sql("create table IF NOT EXISTS TELEFONECLIENTE" +
-                    "(id SERIAL PRIMARY KEY, telefone varchar (255) not null, idCliente varchar (255)" +
+                    "(id SERIAL PRIMARY KEY, telefone varchar (255), idCliente varchar (255)" +
                     //"foreign key (idCliente) references CLIENTE(id)" +
                     " );").fetch().first().subscribe();
 
