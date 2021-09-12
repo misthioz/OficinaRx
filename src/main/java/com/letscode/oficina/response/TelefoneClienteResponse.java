@@ -22,5 +22,10 @@ public class TelefoneClienteResponse {
     private String idCliente;
     private String clienteNome;
 
+    public TelefoneClienteResponse (TelefoneCliente telefoneCliente, Cliente cliente){
+        this.idTelefone = telefoneCliente.getTelefone();
+        this.telefone = telefoneCliente.getTelefone();
+//        this.cliente = cliente;
+    }
 
 }

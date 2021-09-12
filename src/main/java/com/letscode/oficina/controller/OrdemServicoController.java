@@ -25,11 +25,11 @@ public class OrdemServicoController {
     public Flux<OrdemServico> listarOrdensServico() {
         return ordemServicoService.listarOrdensService();
     }
-//
-//    @PostMapping
-//    public Mono<OrdemServicoResponse> novaOrdemServico(@RequestBody OrdemServicoRequest ordemServicoRequest){
-//        return ordemServicoService.criarOrdemServicoService(ordemServicoRequest);
-//    }
+
+    @PostMapping
+    public Mono<OrdemServicoResponse> novaOrdemServico(@RequestBody OrdemServicoRequest ordemServicoRequest){
+        return ordemServicoService.criarOrdemServicoService(ordemServicoRequest);
+    }
     
 }
 

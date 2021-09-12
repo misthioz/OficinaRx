@@ -46,6 +46,10 @@ public class TelefoneClienteService {
 
     }
 
+    public Flux<ClienteResponse> listarTodosPorCliente() {
+        return clienteRepository.findAll().map(this::toResponseTelefone);
+    }
+
     private TelefoneClienteResponse mapearObjetResposta(Tuple2<TelefoneClienteResponse, ClienteResponse> objects) {
         objects.getT1().setClienteNome(objects.getT2().getNome());
         return objects.getT1();

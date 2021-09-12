@@ -27,6 +27,13 @@ public class TelefoneClienteController {
         return telefoneClienteService.listarTodos();
     }
 
+    @GetMapping("listartodosporcliente")
+        Flux<ClienteResponse> listarTodosPorCliente(){
+            Flux<ClienteResponse> clienteResponseFlux = telefoneClienteService.listarTodosPorCliente();
+            System.out.println(clienteResponseFlux);
+            return clienteResponseFlux;
+        }
+
     @GetMapping("pesquisar/{idCliente}")
     public Flux<TelefoneCliente> pesquisarTelPorCliente(@PathVariable String idCliente) {
         return telefoneClienteService.listarPorCliente(idCliente);
