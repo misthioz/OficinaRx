@@ -26,7 +26,7 @@ public class CarroController {
         return carroService.gravarCarro(carroRequest);
     }
 
-    @GetMapping("listarTodos")
+    @GetMapping("listartodos")
     public Flux<Carro> listarCarros(){
         return carroService.listarTodos();
     }

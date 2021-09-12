@@ -22,7 +22,9 @@ public class Cliente {
     @Column("data_nascimento")
     private LocalDate dataNascimento;
     private String cep;
+    @Column("endereco_complemento")
     private String enderecoComplemento;
+    @Column("endereco_numero")
     private String enderecoNumero;
 
 }

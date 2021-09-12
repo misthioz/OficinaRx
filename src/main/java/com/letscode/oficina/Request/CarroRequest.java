@@ -14,5 +14,5 @@ public class CarroRequest {
     private String placa;
     private String marca;
     private String cor;
-    private Cliente cliente;
+    private String idCliente;
 }

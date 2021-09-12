@@ -21,13 +21,6 @@ public class TelefoneClienteResponse {
     private String telefone;
     private String idCliente;
     private String clienteNome;
-    private Cliente cliente;
-
-    public TelefoneClienteResponse (TelefoneCliente telefoneCliente, Cliente cliente){
-        this.idTelefone = telefoneCliente.getTelefone();
-        this.telefone = telefoneCliente.getTelefone();
-        this.cliente = cliente;
-    }
 
 
 }

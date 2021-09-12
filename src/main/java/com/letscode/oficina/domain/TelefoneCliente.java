@@ -19,6 +19,6 @@ public class TelefoneCliente {
     @Id
     private String id;
     private String telefone;
-    private String idcliente;
+    private String idCliente;
 
 }

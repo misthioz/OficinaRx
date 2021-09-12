@@ -1,7 +1,7 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Repository.ClienteRepository;
-import com.letscode.oficina.Repository.TelefoneClienteRepository;
+import com.letscode.oficina.repository.ClienteRepository;
+import com.letscode.oficina.repository.TelefoneClienteRepository;
 import com.letscode.oficina.Request.TelefoneClienteRequest;
 import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.TelefoneCliente;
@@ -16,8 +16,6 @@ import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
 import java.util.Objects;
 
 @Service
@@ -55,16 +53,8 @@ public class TelefoneClienteService {
 
 
     public Flux<TelefoneCliente> listarPorCliente (String idCliente) {
-        return telefoneClienteRepository.findTelefoneClienteByIdcliente(idCliente);
+        return telefoneClienteRepository.findTelefoneClienteByIdCliente(idCliente);
 
-    }
-    public Flux<ClienteResponse> listarTodosPorCliente() {
-//        return telefoneClienteRepository.findAll().map(
-//                telefoneCliente -> Conversores.telefoneClienteParaTelefoneClienteResponse(
-//                                clienteService.listarClientePorId(telefoneCliente.getIdcliente()) , telefoneCliente)
-//        );
-
-        return clienteRepository.findAll().map(this::toResponseTelefone);
     }
 
     private ClienteResponse toResponseTelefone(Cliente cliente) {
@@ -76,7 +66,7 @@ public class TelefoneClienteService {
 
     private void preencherTelefones(ClienteResponse clienteResponse) {
         clienteResponse.setTelefones(new ArrayList<>());
-        telefoneClienteRepository.findAllByIdcliente(clienteResponse.getId()).filter(Objects::nonNull).subscribe(telefoneCliente ->
+        telefoneClienteRepository.findAllByIdCliente(clienteResponse.getId()).filter(Objects::nonNull).subscribe(telefoneCliente ->
         {
             TelefoneClienteResponseMinimal telefoneClienteResponseMinimal = new TelefoneClienteResponseMinimal();
             telefoneClienteResponseMinimal.setTelefone(telefoneCliente.getTelefone());

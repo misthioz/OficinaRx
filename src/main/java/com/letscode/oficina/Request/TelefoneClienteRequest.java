@@ -12,6 +12,6 @@ public class TelefoneClienteRequest {
 
     private String id;
     private String telefone;
-    private String idcliente;
+    private String idCliente;
 
 }

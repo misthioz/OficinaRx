@@ -22,11 +22,9 @@ public class TelefoneClienteController {
         return telefoneClienteService.gravarTelefoneCliente(telefoneClienteRequestMono);
     }
 
-    @GetMapping("/listartodos")
-    public Flux<ClienteResponse> listarTodos () {
-        Flux<ClienteResponse> clienteResponseFlux = telefoneClienteService.listarTodosPorCliente();
-        System.out.println(clienteResponseFlux);
-        return clienteResponseFlux;
+    @GetMapping("listartodos")
+    public Flux<TelefoneClienteResponse> listarTodos () {
+        return telefoneClienteService.listarTodos();
     }
 
     @GetMapping("pesquisar/{idCliente}")

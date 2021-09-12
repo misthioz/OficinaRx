@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Getter
@@ -18,6 +19,7 @@ public class Carro {
     private String placa;
     private String marca;
     private String cor;
-    private String idcliente;
+    @Column("id_cliente")
+    private String idCliente;
 
 }

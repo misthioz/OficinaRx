@@ -1,20 +1,12 @@
 package com.letscode.oficina;
 
-import com.letscode.oficina.Repository.ClienteRepository;
-import com.letscode.oficina.Repository.TelefoneClienteRepository;
-import com.letscode.oficina.domain.Cliente;
-import com.letscode.oficina.domain.TelefoneCliente;
 import io.r2dbc.spi.ConnectionFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
-
-import java.time.Duration;
-import java.util.Arrays;
 
 @SpringBootApplication
 public class OficinaApplication {
