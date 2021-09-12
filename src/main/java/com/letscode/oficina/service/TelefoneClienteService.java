@@ -51,9 +51,6 @@ public class TelefoneClienteService {
         Flux<ClienteResponse> clienteResponseFlux = clienteFlux
                 .map(cliente -> clienteParaClienteResponse(cliente));
 
-//       Flux<ClienteResponse> clienteResponseFlux1 = clienteResponseFlux
-//               .map(clienteResponse -> preencherTelefones(clienteResponse));
-//        return clienteRepository.findAll().map(this::toResponseTelefone);
         return clienteResponseFlux;
     }
 
