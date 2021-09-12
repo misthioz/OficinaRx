@@ -5,7 +5,9 @@ import com.letscode.oficina.response.OrdemServicoResponse;
 import com.letscode.oficina.service.OrdemServicoService;
 import io.reactivex.Observable;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,11 @@ public class OrdemServicoController {
     public Mono<OrdemServicoResponse> novaOrdemServico(@RequestBody OrdemServicoRequest ordemServicoRequest){
         return ordemServicoService.criarOrdemServicoService(ordemServicoRequest);
     }
-    
+
+    @DeleteMapping("delete/{idOrdem}")
+    public Mono<Void> deletarOrdemServico(@PathVariable Integer idOrdem){
+        return ordemServicoService.deletarOrdemServico(idOrdem);
+    }
 }
 
 

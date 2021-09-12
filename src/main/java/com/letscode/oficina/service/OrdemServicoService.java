@@ -36,6 +36,10 @@ public class OrdemServicoService {
         return ordemServicoResponse;
     }
 
+    public Mono<Void> deletarOrdemServico(Integer idOrdem){
+        return ordemServicoRepository.deleteById(idOrdem);
+    }
+
 
 
 }
