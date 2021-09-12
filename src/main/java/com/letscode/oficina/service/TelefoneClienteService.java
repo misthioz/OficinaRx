@@ -47,7 +47,26 @@ public class TelefoneClienteService {
     }
 
     public Flux<ClienteResponse> listarTodosPorCliente() {
-        return clienteRepository.findAll().map(this::toResponseTelefone);
+        Flux<Cliente> clienteFlux = clienteRepository.findAll();
+        Flux<ClienteResponse> clienteResponseFlux = clienteFlux
+                .map(cliente -> clienteParaClienteResponse(cliente));
+
+//       Flux<ClienteResponse> clienteResponseFlux1 = clienteResponseFlux
+//               .map(clienteResponse -> preencherTelefones(clienteResponse));
+//        return clienteRepository.findAll().map(this::toResponseTelefone);
+        return clienteResponseFlux;
+    }
+
+    public ClienteResponse clienteParaClienteResponse(Cliente cliente){
+        ClienteResponse clienteResponse = new ClienteResponse();
+        clienteResponse.setId(cliente.getId());
+        clienteResponse.setNome(cliente.getNome());
+        clienteResponse.setDataNascimento(cliente.getDataNascimento());
+        clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
+        clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
+        preencherTelefones(clienteResponse);
+
+        return clienteResponse;
     }
 
     private TelefoneClienteResponse mapearObjetResposta(Tuple2<TelefoneClienteResponse, ClienteResponse> objects) {
@@ -61,21 +80,21 @@ public class TelefoneClienteService {
 
     }
 
-    private ClienteResponse toResponseTelefone(Cliente cliente) {
-        ClienteResponse clienteResponse = ClienteResponse.convert(cliente);
-        preencherTelefones(clienteResponse);
-
-        return clienteResponse;
-    }
+//    private ClienteResponse toResponseTelefone(Cliente cliente) {
+//        ClienteResponse clienteResponse = ClienteResponse.convert(cliente);
+//        preencherTelefones(clienteResponse);
+//
+//        return clienteResponse;
+//    }
 
     private void preencherTelefones(ClienteResponse clienteResponse) {
         clienteResponse.setTelefones(new ArrayList<>());
         telefoneClienteRepository.findAllByIdCliente(clienteResponse.getId()).filter(Objects::nonNull).subscribe(telefoneCliente ->
         {
-            TelefoneClienteResponseMinimal telefoneClienteResponseMinimal = new TelefoneClienteResponseMinimal();
+            TelefoneClienteResponseMinimal telefoneClienteResponseMinimal = new TelefoneClienteResponseMinimal(telefoneCliente);
             telefoneClienteResponseMinimal.setTelefone(telefoneCliente.getTelefone());
             clienteResponse.getTelefones().add(telefoneClienteResponseMinimal);
-            System.out.println(clienteResponse);
+            System.out.println(clienteResponse + "preencher");
         });
     }
 

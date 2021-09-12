@@ -1,5 +1,6 @@
 package com.letscode.oficina.response;
 
+import com.letscode.oficina.domain.TelefoneCliente;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,9 @@ import lombok.ToString;
 public class TelefoneClienteResponseMinimal {
 
     private String telefone;
+
+public TelefoneClienteResponseMinimal(TelefoneCliente telefoneCliente){
+    this.telefone = telefoneCliente.getTelefone();
+}
+
 }

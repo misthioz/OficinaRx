@@ -30,7 +30,8 @@ public class TelefoneClienteController {
     @GetMapping("listartodosporcliente")
         Flux<ClienteResponse> listarTodosPorCliente(){
             Flux<ClienteResponse> clienteResponseFlux = telefoneClienteService.listarTodosPorCliente();
-            System.out.println(clienteResponseFlux);
+            System.out.println(clienteResponseFlux + "Controller");
+            clienteResponseFlux.map(ClienteResponse::getTelefones);
             return clienteResponseFlux;
         }
 
