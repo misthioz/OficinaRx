@@ -15,6 +15,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -49,9 +50,9 @@ public class TelefoneClienteService {
     public Flux<ClienteResponse> listarTodosPorCliente() {
         Flux<Cliente> clienteFlux = clienteRepository.findAll();
         Flux<ClienteResponse> clienteResponseFlux = clienteFlux
-                .map(cliente -> clienteParaClienteResponse(cliente));
+                .map(this::clienteParaClienteResponse);
 
-        return clienteResponseFlux;
+        return clienteResponseFlux.delayElements(Duration.ofSeconds(3));
     }
 
     public ClienteResponse clienteParaClienteResponse(Cliente cliente){
@@ -77,12 +78,6 @@ public class TelefoneClienteService {
 
     }
 
-//    private ClienteResponse toResponseTelefone(Cliente cliente) {
-//        ClienteResponse clienteResponse = ClienteResponse.convert(cliente);
-//        preencherTelefones(clienteResponse);
-//
-//        return clienteResponse;
-//    }
 
     private void preencherTelefones(ClienteResponse clienteResponse) {
         clienteResponse.setTelefones(new ArrayList<>());
@@ -91,7 +86,6 @@ public class TelefoneClienteService {
             TelefoneClienteResponseMinimal telefoneClienteResponseMinimal = new TelefoneClienteResponseMinimal(telefoneCliente);
             telefoneClienteResponseMinimal.setTelefone(telefoneCliente.getTelefone());
             clienteResponse.getTelefones().add(telefoneClienteResponseMinimal);
-            System.out.println(clienteResponse + "preencher");
         });
     }
 
