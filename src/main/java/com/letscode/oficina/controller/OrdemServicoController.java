@@ -19,20 +19,20 @@ import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/ordemServico")
+@RequestMapping("/ordemservico")
 public class OrdemServicoController {
 
     private final OrdemServicoService ordemServicoService;
 
-    @PostMapping("/adicionar")
+    @PostMapping("adicionar")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<OrdemServicoResponse> novaOrdemServico(@RequestBody OrdemServicoRequest ordemServicoRequest){
         return ordemServicoService.criarOrdemServicoService(ordemServicoRequest);
     }
 
-    @GetMapping("listartodos")
+    @GetMapping("listartodas")
     @ResponseStatus(HttpStatus.OK)
-    public Flux<OrdemServico> listarOrdensServico() {
+    public Flux<OrdemServicoResponse> listarOrdensServico() {
         return ordemServicoService.listarOrdensService();
     }
 

@@ -1,5 +1,6 @@
 package com.letscode.oficina.service;
 
+import com.letscode.oficina.domain.OrdemServico;
 import com.letscode.oficina.repository.ClienteRepository;
 import com.letscode.oficina.request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
@@ -7,6 +8,7 @@ import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
+import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -35,6 +37,10 @@ public class ClienteService {
         return clienteRepository.findById(id);
     }
 
+    public Mono<Cliente> listarClientePorIdParaOS(OrdemServico ordemServico) {
+        return clienteRepository.findById(ordemServico.getIdCliente());
+    }
+
     public Mono<ClienteResponse> listarClientePorIdParaTel(TelefoneCliente telefoneCliente) {
         return clienteRepository.findById(telefoneCliente.getIdCliente()).map(Conversores::pesquisaParaTelefone);
     }
@@ -47,5 +53,6 @@ public class ClienteService {
     public Mono<Void> deletarCliente (String id) {
         return clienteRepository.deleteById(id);
     }
+
 
 }

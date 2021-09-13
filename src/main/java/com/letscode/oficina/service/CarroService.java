@@ -1,10 +1,12 @@
 package com.letscode.oficina.service;
 
+import com.letscode.oficina.domain.OrdemServico;
 import com.letscode.oficina.repository.CarroRepository;
 import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.request.CarroRequest;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
+import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,6 +30,10 @@ public class CarroService {
         return carroRepository.findCarroByPlaca(placa);
     }
 
+    public Mono<Carro> listarCarroPorIdParaOS(OrdemServico ordemServico) {
+        return carroRepository.findById(ordemServico.getIdCarro());
+    }
+
     public Mono<Carro> atualizarCarro(Mono<CarroRequest> carroRequest, String id){
         return carroRequest.map(Conversores::carroRequestParaCarro).doOnNext(e->e.setId(id)).
                 flatMap(carroRepository::save);
@@ -36,5 +42,6 @@ public class CarroService {
     public Mono<Void> deletarCarro(String id){
         return carroRepository.deleteById(id);
     }
+
 
 }

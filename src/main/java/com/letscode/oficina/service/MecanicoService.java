@@ -1,5 +1,6 @@
 package com.letscode.oficina.service;
 
+import com.letscode.oficina.domain.OrdemServico;
 import com.letscode.oficina.request.MecanicoRequest;
 import com.letscode.oficina.domain.Especialidade;
 import com.letscode.oficina.domain.Mecanico;
@@ -7,6 +8,7 @@ import com.letscode.oficina.repository.MecanicoRepository;
 import com.letscode.oficina.response.MecanicoResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
+import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -46,6 +48,10 @@ public class MecanicoService {
         return mecanicoRepository.findById(id);
     }
 
+    public Mono<Mecanico> listarMecanicoPorIdParaOS(OrdemServico ordemServico) {
+        return mecanicoRepository.findById(ordemServico.getIdMecanico());
+    }
+
     public Mono<Mecanico> atualizarMecanico(Mono<MecanicoRequest> mecanicoRequestMono, String id) {
         return mecanicoRequestMono.map(Conversores::mecanicoRequestParaMecanico)
                 .doOnNext(e -> e.setId(id)).flatMap(mecanicoRepository::save);
@@ -54,5 +60,6 @@ public class MecanicoService {
     public Mono<Void> deletarMecanico(String id) {
         return mecanicoRepository.deleteById(id);
     }
+
 
 }

@@ -2,10 +2,7 @@ package com.letscode.oficina.uteis;
 
 import com.letscode.oficina.request.*;
 import com.letscode.oficina.domain.*;
-import com.letscode.oficina.response.ClienteResponse;
-import com.letscode.oficina.response.EspecialidadeResponse;
-import com.letscode.oficina.response.MecanicoResponse;
-import com.letscode.oficina.response.TelefoneClienteResponse;
+import com.letscode.oficina.response.*;
 import com.letscode.oficina.service.EnderecoService;
 import org.springframework.beans.BeanUtils;
 import reactor.core.publisher.Mono;
@@ -95,4 +92,14 @@ public class Conversores {
         return mecanicoResponse;
     }
 
+    public static OrdemServicoResponse ordemServicoParaOrdemServicoResponse(OrdemServico ordemServico) {
+        OrdemServicoResponse ordemServicoResponse = new OrdemServicoResponse();
+        ordemServicoResponse.setData(ordemServico.getData());
+        ordemServicoResponse.setId(ordemServico.getId());
+        ordemServicoResponse.setIdCarro(ordemServico.getIdCarro());
+        ordemServicoResponse.setIdCliente(ordemServico.getIdCliente());
+        ordemServicoResponse.setStatus(ordemServico.getStatus());
+        ordemServicoResponse.setIdMecanico(ordemServico.getIdMecanico());
+        return ordemServicoResponse;
+    }
 }
