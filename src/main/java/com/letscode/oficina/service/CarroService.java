@@ -26,7 +26,7 @@ public class CarroService {
         return carroRepository.findAll();
     }
 
-    public Mono<Carro> listarCarro(String placa){
+    public Flux<Carro> listarCarro(String placa){
         return carroRepository.findCarroByPlaca(placa);
     }
 

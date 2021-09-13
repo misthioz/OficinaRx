@@ -5,6 +5,7 @@ import com.letscode.oficina.domain.*;
 import com.letscode.oficina.response.*;
 import com.letscode.oficina.service.EnderecoService;
 import org.springframework.beans.BeanUtils;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class Conversores {
@@ -25,6 +26,12 @@ public class Conversores {
         Carro carro = new Carro();
         BeanUtils.copyProperties(carroRequest, carro);
         return carro;
+    }
+
+    public static Carro carroFluxParaCarro(Carro carro) {
+        Carro novoCarro = new Carro();
+            BeanUtils.copyProperties(carro, novoCarro);
+        return novoCarro;
     }
 
     public static Especialidade especialidadeRequestParaEspecialidade(EspecialidadeRequest especialidadeRequest) {
