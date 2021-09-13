@@ -1,6 +1,5 @@
 package com.letscode.oficina.response;
 
-import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.Endereco;
 import lombok.Data;
 import java.time.LocalDate;

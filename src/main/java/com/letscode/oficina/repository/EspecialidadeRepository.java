@@ -11,5 +11,4 @@ public interface EspecialidadeRepository extends ReactiveCrudRepository<Especial
 
     Flux<Especialidade> findEspecialidadeByEspecialidadeLike(String nome);
 
-
 }

@@ -1,21 +1,16 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Request.MecanicoRequest;
+import com.letscode.oficina.request.MecanicoRequest;
 import com.letscode.oficina.domain.Especialidade;
 import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.repository.MecanicoRepository;
-import com.letscode.oficina.response.ClienteResponse;
-import com.letscode.oficina.response.EspecialidadeResponse;
 import com.letscode.oficina.response.MecanicoResponse;
-import com.letscode.oficina.response.TelefoneClienteResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
-
-import java.util.ArrayList;
 
 @Service
 @AllArgsConstructor
@@ -28,16 +23,13 @@ public class MecanicoService {
     public Mono<Mecanico> gravarMecanico(Mono<MecanicoRequest> mecanicoRequestMono) {
         return mecanicoRequestMono.map(Conversores::mecanicoRequestParaMecanico)
                 .flatMap(mecanicoRepository::save);
-
     }
 
     public Flux<MecanicoResponse> listarTodos() {
         Flux<Mecanico> mecanicoFlux = mecanicoRepository.findAll();
         Flux<MecanicoResponse> mecanicoResponseFlux = mecanicoFlux
                 .map(mecanico -> Conversores.mecanicoParaMecanicoResponse(mecanico, enderecoService));
-
         Flux<Especialidade> especialidadeFlux = mecanicoResponseFlux.flatMap(especialidadeService::listarPorIdParaMecanico);
-
         return mecanicoResponseFlux.zipWith(especialidadeFlux).map(this::mapearObjectResposta);
     }
 
@@ -45,8 +37,6 @@ public class MecanicoService {
         objects.getT1().setEspecialidade(objects.getT2().getEspecialidade());
         return objects.getT1();
     }
-
-
 
     public Flux<MecanicoResponse> listarMecanicoPorNome(String nome) {
         return mecanicoRepository.findMecanicoByNomeIsLike(nome);

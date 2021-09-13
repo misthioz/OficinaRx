@@ -8,5 +8,6 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface CarroRepository extends ReactiveCrudRepository<Carro, String> {
 
-    public Mono<Carro> findCarroByPlaca(String placa);
+    Mono<Carro> findCarroByPlaca(String placa);
+
 }

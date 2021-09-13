@@ -1,14 +1,11 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.request;
 
-import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.domain.EnumStatus;
-import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.domain.OrdemServico;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-
 
 @Getter
 @Setter
@@ -23,16 +20,13 @@ public class OrdemServicoRequest {
 
     public OrdemServico convert(){
         OrdemServico ordemServico = new OrdemServico();
-
         ordemServico.setId(this.id);
         ordemServico.setIdCarro(this.idCarro);
         ordemServico.setIdMecanico(this.idMecanico);
         ordemServico.setIdCliente(this.idCliente);
         ordemServico.setStatus(this.status);
         ordemServico.setData(this.data);
-
         return ordemServico;
     }
-
 
 }

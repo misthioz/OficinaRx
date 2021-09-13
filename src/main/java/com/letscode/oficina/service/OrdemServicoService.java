@@ -1,6 +1,6 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Request.OrdemServicoRequest;
+import com.letscode.oficina.request.OrdemServicoRequest;
 import com.letscode.oficina.repository.OrdemServicoRepository;
 import com.letscode.oficina.domain.OrdemServico;
 import com.letscode.oficina.response.OrdemServicoResponse;
@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class OrdemServicoService {
 
-
     private final OrdemServicoRepository ordemServicoRepository;
 
     public Flux<OrdemServico> listarOrdensService() {
@@ -23,7 +22,6 @@ public class OrdemServicoService {
 
     public Mono<OrdemServicoResponse> criarOrdemServicoService(OrdemServicoRequest ordemServicoRequest) {
         Mono<OrdemServico> ordemServicoMono = Mono.just(ordemServicoRequest).flatMap(this::generateOrdemServico).flatMap(ordemServicoRepository::save);
-
         return ordemServicoMono.map(this::generateOrdemServicoResponse);
     }
 
@@ -39,7 +37,5 @@ public class OrdemServicoService {
     public Mono<Void> deletarOrdemServico(Integer idOrdem){
         return ordemServicoRepository.deleteById(idOrdem);
     }
-
-
 
 }

@@ -1,7 +1,7 @@
 package com.letscode.oficina.service;
 
 import com.letscode.oficina.repository.ClienteRepository;
-import com.letscode.oficina.Request.ClienteRequest;
+import com.letscode.oficina.request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.response.ClienteResponse;
@@ -23,10 +23,8 @@ public class ClienteService {
                flatMap(clienteRepository::save);
     }
 
-    //TODO Pesquisar como retornar o clientResponse?
     public Flux<ClienteResponse> listarTodos() {
         return clienteRepository.findAll().map(cliente -> Conversores.clienteParaClienteResponse(cliente, enderecoService));
-     //   return clienteRepository.findAll();
     }
 
     public Flux<ClienteResponse> listarCliente(String nome) {
@@ -34,15 +32,12 @@ public class ClienteService {
     }
 
     public Mono<Cliente> listarClientePorId(String id) {
-        System.out.println("Listando");
         return clienteRepository.findById(id);
     }
 
     public Mono<ClienteResponse> listarClientePorIdParaTel(TelefoneCliente telefoneCliente) {
         return clienteRepository.findById(telefoneCliente.getIdCliente()).map(Conversores::pesquisaParaTelefone);
     }
-
-
 
     public Mono<Cliente> atualizarCliente(Mono<ClienteRequest> clienteRequestMono, String id) {
         return clienteRequestMono.map(Conversores::clienteRequestParaCliente).doOnNext(e->e.setId(id)).
@@ -52,4 +47,5 @@ public class ClienteService {
     public Mono<Void> deletarCliente (String id) {
         return clienteRepository.deleteById(id);
     }
+
 }

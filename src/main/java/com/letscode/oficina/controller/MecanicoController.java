@@ -1,6 +1,6 @@
 package com.letscode.oficina.controller;
 
-import com.letscode.oficina.Request.MecanicoRequest;
+import com.letscode.oficina.request.MecanicoRequest;
 import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.response.MecanicoResponse;
 import com.letscode.oficina.service.MecanicoService;
@@ -38,23 +38,27 @@ public class MecanicoController {
     }
 
     @GetMapping("pesquisar/{nome}")
-    public Flux<MecanicoResponse> localizarMecanicoPorNome(@PathVariable String nomeMecanico) {
-        return mecanicoService.listarMecanicoPorNome(nomeMecanico);
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<MecanicoResponse> localizarMecanicoPorNome(@PathVariable String nome) {
+        return mecanicoService.listarMecanicoPorNome(nome);
     }
 
     @GetMapping("pesquisar/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Mono<Mecanico> localizarMecanicoPorId(@PathVariable String id) {
         return mecanicoService.listarMecanicoPorId(id);
     }
 
     @PutMapping("atualizar/{id}")
-    public Mono<Mecanico> atualizarMecanico(@RequestBody Mono<MecanicoRequest> mecanicoRequestMono, @PathVariable String idMecanico) {
-        return mecanicoService.atualizarMecanico(mecanicoRequestMono, idMecanico);
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Mecanico> atualizarMecanico(@RequestBody Mono<MecanicoRequest> mecanicoRequestMono, @PathVariable String id) {
+        return mecanicoService.atualizarMecanico(mecanicoRequestMono, id);
     }
 
     @DeleteMapping("remover/{id}")
-    public Mono<Void> removerMecanico(@PathVariable String idMecanico) {
-        return mecanicoService.deletarMecanico(idMecanico);
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Void> removerMecanico(@PathVariable String id) {
+        return mecanicoService.deletarMecanico(id);
     }
 
 }

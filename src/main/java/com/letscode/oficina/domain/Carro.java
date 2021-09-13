@@ -1,6 +1,5 @@
 package com.letscode.oficina.domain;
 
-import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

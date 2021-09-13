@@ -1,9 +1,8 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.relational.core.mapping.Column;
 
 @Data
 @NoArgsConstructor
@@ -16,4 +15,5 @@ public class MecanicoRequest {
     private String enderecoComplemento;
     private String enderecoNumero;
     private String idEspecialidade;
+
 }

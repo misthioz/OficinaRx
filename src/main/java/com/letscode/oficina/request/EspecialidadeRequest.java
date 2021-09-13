@@ -1,4 +1,4 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class EspecialidadeRequest {
 
     private String especialidade;
+
 }

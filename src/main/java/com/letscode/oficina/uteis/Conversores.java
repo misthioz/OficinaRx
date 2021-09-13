@@ -1,6 +1,6 @@
 package com.letscode.oficina.uteis;
 
-import com.letscode.oficina.Request.*;
+import com.letscode.oficina.request.*;
 import com.letscode.oficina.domain.*;
 import com.letscode.oficina.response.ClienteResponse;
 import com.letscode.oficina.response.EspecialidadeResponse;
@@ -11,7 +11,6 @@ import org.springframework.beans.BeanUtils;
 import reactor.core.publisher.Mono;
 
 public class Conversores {
-
 
     public static ClienteRequest clienteParaClienteRequest(Cliente cliente) {
         ClienteRequest clienteRequest = new ClienteRequest();
@@ -43,7 +42,6 @@ public class Conversores {
         return especialidadeResponse;
     }
 
-
     public static TelefoneCliente telefoneClienteRequestParaTelefoneCliente(TelefoneClienteRequest telefoneClienteRequest) {
         TelefoneCliente telefoneCliente = new TelefoneCliente();
         BeanUtils.copyProperties(telefoneClienteRequest, telefoneCliente);
@@ -74,10 +72,8 @@ public class Conversores {
         return clienteResponse;
     }
 
-
     public static Cliente clienteMonoParaCliente(Mono<Cliente> clienteMono, Cliente cliente) {
         clienteMono.subscribe(cliente1 -> BeanUtils.copyProperties(cliente1, cliente));
-//        clienteMono.subscribe(cliente1 -> System.out.println(cliente1.toString()));
         return cliente;
     }
 
@@ -85,9 +81,7 @@ public class Conversores {
         Mecanico mecanico = new Mecanico();
         BeanUtils.copyProperties(mecanicoRequest, mecanico);
         return mecanico;
-
     }
-
 
     public static MecanicoResponse mecanicoParaMecanicoResponse(Mecanico mecanico, EnderecoService enderecoService) {
         MecanicoResponse mecanicoResponse= new MecanicoResponse();
@@ -99,8 +93,6 @@ public class Conversores {
         mecanicoResponse.setIdEspecialidade(mecanico.getIdEspecialidade());
         enderecoService.viacep(mecanico.getCep()).subscribe(mecanicoResponse::setEndereco);
         return mecanicoResponse;
-
     }
-
 
 }

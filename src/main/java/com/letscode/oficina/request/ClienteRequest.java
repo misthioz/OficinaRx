@@ -1,4 +1,4 @@
-package com.letscode.oficina.Request;
+package com.letscode.oficina.request;
 
 import lombok.*;
 

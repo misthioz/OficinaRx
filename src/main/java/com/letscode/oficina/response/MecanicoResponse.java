@@ -18,4 +18,5 @@ public class MecanicoResponse {
     private Endereco endereco;
     private String idEspecialidade;
     private String especialidade;
+
 }

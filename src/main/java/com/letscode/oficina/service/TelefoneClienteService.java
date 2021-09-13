@@ -2,7 +2,7 @@ package com.letscode.oficina.service;
 
 import com.letscode.oficina.repository.ClienteRepository;
 import com.letscode.oficina.repository.TelefoneClienteRepository;
-import com.letscode.oficina.Request.TelefoneClienteRequest;
+import com.letscode.oficina.request.TelefoneClienteRequest;
 import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.response.ClienteResponse;
@@ -27,31 +27,24 @@ public class TelefoneClienteService {
     private final TelefoneClienteRepository telefoneClienteRepository;
     private final ClienteRepository clienteRepository;
 
-
     public Mono<TelefoneCliente> gravarTelefoneCliente (Mono<TelefoneClienteRequest> telefoneRequestMono) {
         return telefoneRequestMono.map(Conversores::telefoneClienteRequestParaTelefoneCliente)
                 .flatMap(telefoneClienteRepository::save);
     }
 
     public Flux<TelefoneClienteResponse> listarTodos() {
-
         Flux<TelefoneCliente> telefonesclientesRetornados = telefoneClienteRepository.findAll();
-
         Flux<TelefoneClienteResponse> telefoneClienteResponseFlux = telefonesclientesRetornados
                 .map(Conversores::telefoneClienteParaTelefoneClienteResponse);
-
         Flux<ClienteResponse>  clienteResponseFlux = telefonesclientesRetornados
                 .flatMap(clienteService::listarClientePorIdParaTel);
-
         return telefoneClienteResponseFlux.zipWith(clienteResponseFlux).map(this::mapearObjetResposta);
-
     }
 
     public Flux<ClienteResponse> listarTodosPorCliente() {
         Flux<Cliente> clienteFlux = clienteRepository.findAll();
         Flux<ClienteResponse> clienteResponseFlux = clienteFlux
                 .map(this::clienteParaClienteResponse);
-
         return clienteResponseFlux.delayElements(Duration.ofSeconds(3));
     }
 
@@ -63,7 +56,6 @@ public class TelefoneClienteService {
         clienteResponse.setEnderecoComplemento(cliente.getEnderecoComplemento());
         clienteResponse.setEnderecoNumero(cliente.getEnderecoNumero());
         preencherTelefones(clienteResponse);
-
         return clienteResponse;
     }
 
@@ -72,10 +64,8 @@ public class TelefoneClienteService {
         return objects.getT1();
     }
 
-
     public Flux<TelefoneCliente> listarPorCliente (String idCliente) {
         return telefoneClienteRepository.findTelefoneClienteByIdCliente(idCliente);
-
     }
 
 
@@ -98,6 +88,5 @@ public class TelefoneClienteService {
     public Mono<Void> deletarTelefoneCliente (String idTelefone) {
         return telefoneClienteRepository.deleteById(idTelefone);
     }
-
 
 }

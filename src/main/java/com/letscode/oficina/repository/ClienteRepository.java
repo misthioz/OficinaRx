@@ -10,7 +10,6 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface ClienteRepository extends ReactiveCrudRepository<Cliente, String> {
 
-    public Flux<ClienteResponse> findClienteByNomeIsLike(String nome);
-
+    Flux<ClienteResponse> findClienteByNomeIsLike(String nome);
 
 }

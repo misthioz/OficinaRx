@@ -1,8 +1,6 @@
 package com.letscode.oficina.response;
 
-import com.letscode.oficina.domain.Carro;
 import com.letscode.oficina.domain.EnumStatus;
-import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.domain.OrdemServico;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +20,6 @@ public class OrdemServicoResponse {
     private EnumStatus status;
     private LocalDate data;
 
-
     public OrdemServicoResponse(OrdemServico ordemServico){
         this.id = ordemServico.getId();
         this.idCarro = ordemServico.getIdCarro();
@@ -31,4 +28,5 @@ public class OrdemServicoResponse {
         this.status = ordemServico.getStatus();
         this.data = ordemServico.getData();
     }
+
 }

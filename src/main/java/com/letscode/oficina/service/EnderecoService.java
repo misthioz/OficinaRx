@@ -11,16 +11,14 @@ import retrofit2.Retrofit;
 @Service
 public class EnderecoService {
 
-
     private final Retrofit retrofit;
 
     @Autowired
     public EnderecoService() {
-        this.retrofit = RetrofitInitializer.getRetrofit();;
+        this.retrofit = RetrofitInitializer.getRetrofit();
     }
 
     public Mono<Endereco> viacep(String cep) {
-
         return this.retrofit.create(RetrofitEnderecoService.class).getEndereco(cep);
     }
 

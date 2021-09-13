@@ -16,8 +16,8 @@ public class TelefoneClienteResponseMinimal {
 
     private String telefone;
 
-public TelefoneClienteResponseMinimal(TelefoneCliente telefoneCliente){
-    this.telefone = telefoneCliente.getTelefone();
-}
+    public TelefoneClienteResponseMinimal(TelefoneCliente telefoneCliente) {
+        this.telefone = telefoneCliente.getTelefone();
+    }
 
 }

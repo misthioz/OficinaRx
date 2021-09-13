@@ -1,8 +1,7 @@
 package com.letscode.oficina.service;
 
-import com.letscode.oficina.Request.EspecialidadeRequest;
+import com.letscode.oficina.request.EspecialidadeRequest;
 import com.letscode.oficina.domain.Especialidade;
-import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.repository.EspecialidadeRepository;
 import com.letscode.oficina.response.EspecialidadeResponse;
 import com.letscode.oficina.response.MecanicoResponse;
@@ -11,14 +10,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.util.function.Tuple2;
 
 @Service
 @AllArgsConstructor
 public class EspecialidadeService {
 
     private final EspecialidadeRepository especialidadeRepository;
-
 
     public Mono<Especialidade> gravarEspecialidade(Mono<EspecialidadeRequest> especialidadeRequestMono) {
         return especialidadeRequestMono.map(Conversores::especialidadeRequestParaEspecialidade)
@@ -28,7 +25,6 @@ public class EspecialidadeService {
     public Flux<EspecialidadeResponse> listarTodas() {
         return especialidadeRepository.findAll()
                 .map(Conversores::especialidadeParaEspecialidadeResponse);
-
     }
 
     public Flux<EspecialidadeResponse> listarPorNome(String nome) {
@@ -48,6 +44,5 @@ public class EspecialidadeService {
     public Mono<Void> deletarEspecialidade(String idEspecialidade) {
         return especialidadeRepository.deleteById(idEspecialidade);
     }
-
 
 }
