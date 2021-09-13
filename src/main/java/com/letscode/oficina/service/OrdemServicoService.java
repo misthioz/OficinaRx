@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
-import reactor.util.function.Tuple4;
-
 
 @AllArgsConstructor
 @Service
@@ -31,9 +29,8 @@ public class OrdemServicoService {
          Flux<Mecanico> mecanicoFlux = ordemServicoFlux.flatMap(mecanicoService::listarMecanicoPorIdParaOS);
          Flux<Carro> carroFlux = ordemServicoFlux.flatMap(carroService::listarCarroPorIdParaOS);
          Flux<Cliente> clienteFlux = ordemServicoFlux.flatMap(clienteService::listarClientePorIdParaOS);
-
          return ordemServicoResponseFlux
-                 .zipWith (mecanicoFlux).map(this::unirOScomMecanico)
+                 .zipWith(mecanicoFlux).map(this::unirOScomMecanico)
                  .zipWith(clienteFlux).map(this::unirOScomCliente)
                  .zipWith(carroFlux).map(this::unirOScomCarro);
     }
@@ -64,8 +61,10 @@ public class OrdemServicoService {
     }
 
     private OrdemServicoResponse generateOrdemServicoResponse(OrdemServico ordemServico){
-        OrdemServicoResponse ordemServicoResponse = new OrdemServicoResponse(ordemServico);
-        return ordemServicoResponse;
+        return new OrdemServicoResponse(ordemServico);
+        // FIXME @Anderson Segundo o Sonarlint, podemos diminuir o código com a solução acima
+        //OrdemServicoResponse ordemServicoResponse = new OrdemServicoResponse(ordemServico);
+        //return ordemServicoResponse;
     }
 
     public Mono<Void> deletarOrdemServico(Integer idOrdem){
