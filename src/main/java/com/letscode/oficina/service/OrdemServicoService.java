@@ -62,9 +62,6 @@ public class OrdemServicoService {
 
     private OrdemServicoResponse generateOrdemServicoResponse(OrdemServico ordemServico){
         return new OrdemServicoResponse(ordemServico);
-        // FIXME @Anderson Segundo o Sonarlint, podemos diminuir o código com a solução acima
-        //OrdemServicoResponse ordemServicoResponse = new OrdemServicoResponse(ordemServico);
-        //return ordemServicoResponse;
     }
 
     public Mono<Void> deletarOrdemServico(Integer idOrdem){
