@@ -68,7 +68,10 @@ public class OrdemServicoService {
         return ordemServicoRepository.deleteById(idOrdem);
     }
 
-    public Flux<OrdemServico> findByIdCarro(Flux<Carro> carroFlux) {
-        return ordemServicoRepository.findByIdCarro(carroFlux.)
+    public Flux<OrdemServico> findByIdCarro(String id) {
+        return ordemServicoRepository.findByIdCarro(id);
+    }
+
+    public Flux<OrdemServico> findAllByIdCarro(String id) { return ordemServicoRepository.findAllByIdCarro(id);
     }
 }

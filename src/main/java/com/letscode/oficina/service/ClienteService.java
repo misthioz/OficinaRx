@@ -6,6 +6,7 @@ import com.letscode.oficina.request.ClienteRequest;
 import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.TelefoneCliente;
 import com.letscode.oficina.response.ClienteResponse;
+import com.letscode.oficina.response.OrdemServicoResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
 import org.reactivestreams.Publisher;
@@ -40,6 +41,11 @@ public class ClienteService {
     public Mono<Cliente> listarClientePorIdParaOS(OrdemServico ordemServico) {
         return clienteRepository.findById(ordemServico.getIdCliente());
     }
+
+    public Mono<Cliente> listarClientePorIdParaRelatorio(OrdemServicoResponse ordemServicoResponse) {
+        return clienteRepository.findById(ordemServicoResponse.getIdCliente());
+    }
+
 
     public Mono<ClienteResponse> listarClientePorIdParaTel(TelefoneCliente telefoneCliente) {
         return clienteRepository.findById(telefoneCliente.getIdCliente()).map(Conversores::pesquisaParaTelefone);

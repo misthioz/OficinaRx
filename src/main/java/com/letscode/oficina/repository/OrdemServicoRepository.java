@@ -9,5 +9,6 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface OrdemServicoRepository extends ReactiveCrudRepository<OrdemServico, Integer> {
     public Flux<OrdemServico> findByIdCarro(String id);
+    public Flux<OrdemServico> findAllByIdCarro(String id);
 
 }

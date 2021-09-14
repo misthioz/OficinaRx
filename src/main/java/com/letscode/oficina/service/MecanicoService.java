@@ -6,6 +6,7 @@ import com.letscode.oficina.domain.Especialidade;
 import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.repository.MecanicoRepository;
 import com.letscode.oficina.response.MecanicoResponse;
+import com.letscode.oficina.response.OrdemServicoResponse;
 import com.letscode.oficina.uteis.Conversores;
 import lombok.AllArgsConstructor;
 import org.reactivestreams.Publisher;
@@ -51,6 +52,11 @@ public class MecanicoService {
     public Mono<Mecanico> listarMecanicoPorIdParaOS(OrdemServico ordemServico) {
         return mecanicoRepository.findById(ordemServico.getIdMecanico());
     }
+
+    public Mono<Mecanico> listarMecanicoPorIdParaRelatorio(OrdemServicoResponse ordemServicoResponse) {
+        return mecanicoRepository.findById(ordemServicoResponse.getIdMecanico());
+    }
+
 
     public Mono<Mecanico> atualizarMecanico(Mono<MecanicoRequest> mecanicoRequestMono, String id) {
         return mecanicoRequestMono.map(Conversores::mecanicoRequestParaMecanico)

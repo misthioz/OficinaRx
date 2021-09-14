@@ -28,10 +28,10 @@ public class Conversores {
         return carro;
     }
 
-    public static Carro carroFluxParaCarro(Carro carro) {
-        Carro novoCarro = new Carro();
-            BeanUtils.copyProperties(carro, novoCarro);
-        return novoCarro;
+    public static Carro carroMonoParaCarro(Mono<Carro> carroMono) {
+        Carro carro = new Carro();
+        carroMono.subscribe(carro1 -> BeanUtils.copyProperties(carro1, carro));
+        return carro;
     }
 
     public static Especialidade especialidadeRequestParaEspecialidade(EspecialidadeRequest especialidadeRequest) {
@@ -76,10 +76,6 @@ public class Conversores {
         return clienteResponse;
     }
 
-    public static Cliente clienteMonoParaCliente(Mono<Cliente> clienteMono, Cliente cliente) {
-        clienteMono.subscribe(cliente1 -> BeanUtils.copyProperties(cliente1, cliente));
-        return cliente;
-    }
 
     public static Mecanico mecanicoRequestParaMecanico(MecanicoRequest mecanicoRequest) {
         Mecanico mecanico = new Mecanico();
@@ -108,5 +104,11 @@ public class Conversores {
         ordemServicoResponse.setStatus(ordemServico.getStatus());
         ordemServicoResponse.setIdMecanico(ordemServico.getIdMecanico());
         return ordemServicoResponse;
+    }
+
+    public static RelatorioResponse ordemServicoResponseParaRelatorioResponse(OrdemServicoResponse ordemServicoResponse) {
+        RelatorioResponse relatorioResponse = new RelatorioResponse();
+        BeanUtils.copyProperties(ordemServicoResponse, relatorioResponse);
+        return relatorioResponse;
     }
 }
