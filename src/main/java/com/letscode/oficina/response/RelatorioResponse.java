@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -13,6 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class RelatorioResponse {
+
     private Integer id;
     private String idCarro;
     private String placaCarro;

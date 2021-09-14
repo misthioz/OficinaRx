@@ -5,16 +5,9 @@ import com.letscode.oficina.domain.*;
 import com.letscode.oficina.response.*;
 import com.letscode.oficina.service.EnderecoService;
 import org.springframework.beans.BeanUtils;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class Conversores {
-
-    public static ClienteRequest clienteParaClienteRequest(Cliente cliente) {
-        ClienteRequest clienteRequest = new ClienteRequest();
-        BeanUtils.copyProperties(cliente, clienteRequest);
-        return clienteRequest;
-    }
 
     public static Cliente clienteRequestParaCliente(ClienteRequest clienteRequest) {
         Cliente cliente = new Cliente();
@@ -75,7 +68,6 @@ public class Conversores {
         clienteResponse.setNome(cliente.getNome());
         return clienteResponse;
     }
-
 
     public static Mecanico mecanicoRequestParaMecanico(MecanicoRequest mecanicoRequest) {
         Mecanico mecanico = new Mecanico();

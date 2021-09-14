@@ -5,9 +5,6 @@ import com.letscode.oficina.domain.Cliente;
 import com.letscode.oficina.domain.Mecanico;
 import com.letscode.oficina.domain.OrdemServico;
 import com.letscode.oficina.repository.CarroRepository;
-import com.letscode.oficina.repository.ClienteRepository;
-import com.letscode.oficina.repository.MecanicoRepository;
-import com.letscode.oficina.repository.OrdemServicoRepository;
 import com.letscode.oficina.response.OrdemServicoResponse;
 import com.letscode.oficina.response.RelatorioResponse;
 import com.letscode.oficina.uteis.Conversores;
@@ -20,6 +17,7 @@ import reactor.util.function.Tuple2;
 @AllArgsConstructor
 @Service
 public class RelatorioService {
+
     private CarroRepository carroRepository;
     private MecanicoService mecanicoService;
     private ClienteService clienteService;
@@ -28,18 +26,15 @@ public class RelatorioService {
     public Flux<RelatorioResponse> imprimirRelatorio(String placa) {
         Mono<Carro> carroMono = carroRepository.findCarroByPlaca(placa);
         Carro carro = Conversores.carroMonoParaCarro(carroMono);
-        Flux<OrdemServico> ordemServicoFlux = ordemServicoService
-                .findAllByIdCarro(carro.getId());
+        Flux<OrdemServico> ordemServicoFlux = ordemServicoService.findAllByIdCarro(carro.getId());
         Flux<Mecanico> mecanicoFlux = ordemServicoFlux.flatMap(mecanicoService::listarMecanicoPorIdParaOS);
         Flux<Cliente> clienteFlux = ordemServicoFlux.flatMap(clienteService::listarClientePorIdParaOS);
-
         return ordemServicoFlux
                 .map(Conversores::ordemServicoParaOrdemServicoResponse)
                 .zipWith(mecanicoFlux).map(this::unirOScomMecanico)
                 .zipWith(clienteFlux).map(this::unirOScomCliente)
                 .zipWith(carroMono).map(this::unirOScomCarro)
                 .map(Conversores::ordemServicoResponseParaRelatorioResponse);
-
     }
 
     private OrdemServicoResponse unirOScomCarro(Tuple2<OrdemServicoResponse, Carro> objects) {
@@ -53,10 +48,9 @@ public class RelatorioService {
         return  objects.getT1();
     }
 
-    private OrdemServicoResponse unirOScomMecanico (Tuple2<OrdemServicoResponse, Mecanico> objects) {
+    private OrdemServicoResponse unirOScomMecanico(Tuple2<OrdemServicoResponse, Mecanico> objects) {
         objects.getT1().setNomeMecanico(objects.getT2().getNome());
         return objects.getT1();
     }
-
 
 }

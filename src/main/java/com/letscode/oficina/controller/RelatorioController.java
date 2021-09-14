@@ -1,6 +1,5 @@
 package com.letscode.oficina.controller;
 
-import com.letscode.oficina.response.OrdemServicoResponse;
 import com.letscode.oficina.response.RelatorioResponse;
 import com.letscode.oficina.service.RelatorioService;
 import lombok.AllArgsConstructor;
